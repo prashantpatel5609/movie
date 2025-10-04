@@ -18,7 +18,7 @@ const MobNav = () => {
       </div>
 
 
-      <div className={`md:hidden w-[81%] fixed top-20 right-0  bg-gray-800 text-white  z-40  sm:block  h-full border-r-2 border-zinc-400 p-3 transform transition-transform duration-500 ease-in-out    ${open ? "translate-x-0" : "translate-x-full"}`}>
+      <div className={`md:hidden w-[81%] fixed top-17 right-0  bg-gray-800 text-white  z-40  sm:block  h-full border-r-2 border-zinc-400 p-3 transform transition-transform duration-500 ease-in-out    ${open ? "translate-x-0" : "translate-x-full"}`}>
         <h1  className="text-white font-bold">
           <i class="mr-2 text-zinc-200 text-2xl ri-account-circle-fill"></i>
           
