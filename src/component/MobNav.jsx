@@ -9,7 +9,7 @@ const MobNav = () => {
 
   return (
    <div>
-      <div className="md:hidden  h-[8vh] w-full flex items-center justify-between p-4">
+      <div className="md:hidden  h-[80vh] w-full flex items-center justify-between  md:p-4">
         <h1 className="text-white text-5xl font-bold">
           <i className=" text-[#6556CD] ri-tv-fill mr-2"></i>
           <span className="text-2xl">Movie</span>
