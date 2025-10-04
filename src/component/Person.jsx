@@ -49,19 +49,18 @@ const navigate = useNavigate();
     refreshHandler();
   }, [category]);
   return person.length > 0 ? (
-    <div className="w-screen h-screen ">
-      <div className=" px-[4%] w-full flex items-center justify-between">
-        <h1 className="] text-2xl font-semibold text-zinc-400">
+    <div className="w-screen h-screen overflow-auto overflow-x-hidden">
+      <div className="md:px-[4%] w-full  max-sm:flex-col max-sm:items-start max-sm:justify-start flex items-center justify-between">
+        <h1 className="max-sm:mt-1 text-4xl md:text-2xl font-semibold text-zinc-400">
           <i
             onClick={() => navigate(-1)}
-            className="mr-2 ri-arrow-left-line hover:text-[#6557cc]"
+            className="  max-sm:ml-4 md:mr-2 ri-arrow-left-line hover:text-[#6557cc]"
           ></i>
           People
-        </h1>
-
-        <Topnav />
+        </h1><Topnav />
         
       </div>
+      <div className="max-sm:px-15">
       <InfiniteScroll
         dataLength={person.length}
         next={GetPerson}
@@ -71,6 +70,7 @@ const navigate = useNavigate();
         {" "}
         <Cards data={person} title="person"  />
       </InfiniteScroll>
+      </div>
     </div>
   ) : (
     <Loader />

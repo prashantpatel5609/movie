@@ -14,7 +14,7 @@ function Trailer() {
   
   console.log(ytvideo.key);
   return (
-    <div className="absolute  p-12 w-[100%] h-[70%] flex items-center justify-center bg-[rgba(0,0,0,0.9)] z-[100] top-0 left-0 ">
+    <div className="absolute  md:p-12 w-[100%] md:h-[70%] max-sm:h-[113vw] flex items-center justify-center bg-[rgba(0,0,0,0.9)] z-[100] top-0 left-0 ">
       <Link
         onClick={() => navigate(-1)}
         className="hover:text-[#6556CD] absolute text-2xl top-[5%] right-[5%] ri-close-fill"

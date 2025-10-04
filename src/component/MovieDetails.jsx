@@ -31,10 +31,10 @@ const MovieDetails = () => {
         backgroundPosition: "top 10%",
         backgroundRepeat: "no-repeat",
       }}
-      className="relative w-full h-[150vh] text-white px-[10%]"
+      className="relative w-full h-[150vh] overflow-hidden overflow-y-auto text-white px-[10%] max-sm:px-6"
     >
       {/*navpart 1*/}
-      <nav className=" h-[10vh] w-full text-zinc-100 text-xl flex items-center justify-start gap-10">
+      <nav className=" h-[10vh] w-full text-zinc-100 text-2xl max-sm:text-3xl flex items-center justify-start gap-10 ">
         <Link
           onClick={() => navigate(-1)}
           className="mr-2 ri-arrow-left-line hover:text-[#6557cc]"
@@ -58,9 +58,9 @@ const MovieDetails = () => {
       </nav>
       {/*navpart 2*/}
 
-      <div className="w-ful flex">
+      <div className="w-full flex max-sm:flex-col">
         <img
-          className=" h-[44vh] object-cover shadow-[8px_17px_38px_2px_rgba(0,0,0,.5)]"
+          className="rounded-md h-[62vh] max-sm:h-[44vh] object-cover shadow-[8px_17px_38px_2px_rgba(0,0,0,.5)]"
           src={`https://image.tmdb.org/t/p/original/${
             info.details.poster_path ||
             info.details.backdrop_path ||
@@ -69,7 +69,7 @@ const MovieDetails = () => {
           alt=""
         />
 
-        <div className="content ml-[5%]  text-white ">
+        <div className="content ml-[5%] mt-5  text-white ">
           <h1 className="text-5xl font-black">
             {info.details.name ||
               info.details.title ||
@@ -77,29 +77,48 @@ const MovieDetails = () => {
               info.details.original_title}
             {"   "}
             <small className="text-zinc-300 text-2xl font-bold">
-              ({info.details.release_date.split("-")[0]})
+              ({info.details.release_date.split("-")[0]}){" "}
+             
+              
+             
             </small>
-          </h1>
+           
+              
+</h1>
+ <div className=" flex justify-between   items-center h-12  mt-4">
+ <span className="  rounded-full text-xl font-semibold bg-yellow-600 text-white w-[7vh] h-[7vh] flex justify-center items-center">
+                {(info.details.vote_average * 10).toFixed()} <sup>%</sup>
+              </span>
+               <Link
+            to={`${pathname}/trailer`}
+            className="bg-[#8120fc] p-3  rounded-md md:hidden"
+          >
+            <i class="ri-play-reverse-large-fill"></i> Play Trailer
+          </Link>
+          </div>
+           
 
           <div className="flex gap-x-5 items-center mt-3 mb-3 text-white ">
-            <span className=" font-semibold rounded-full text-white h-[7vh] w-[7vh] bg-amber-400 flex justify-center items-center">
-              {(info.details.vote_average * 10).toFixed()} <sup>%</sup>
-            </span>
-            <h1 className="w-[60px] font-semibold text-2xl leading-6">
+            <h1 className="w-[60px] font-semibold text-2xl leading-6 max-sm:mt-2">
               User Score
             </h1>
             <h1>{info.details.release_date}</h1>
             <h1>{info.details.genres.map((gen) => gen.name).join(", ")}</h1>
             <h1>{info.details.runtime} min</h1>
           </div>
-
+         
           <h1 className="text-xl font-semibold italic">
             {info.details.tagline}
           </h1>
           <h1 className="text-2xl mt-2 mb-3 ">Overview :</h1>
           <p className="mb-6">{info.details.overview}</p>
-             
-             <Link to={`${pathname}/trailer`} className=" bg-[#8120fc] p-3 rounded-md "><i class="ri-play-reverse-large-fill"></i> Play Trailer</Link>
+
+          <Link
+            to={`${pathname}/trailer`}
+            className=" max-sm:hidden bg-[#8120fc] p-3 rounded-md "
+          >
+            <i class="ri-play-reverse-large-fill"></i> Play Trailer
+          </Link>
         </div>
       </div>
       {/*navpart 3*/}
@@ -133,14 +152,17 @@ const MovieDetails = () => {
         )}
       </div>
       {/*navpart 4*/}
- 
-<hr className="mt-6 h-[2px] bg-zinc-400 border-0" />
 
+      <hr className="md:mt-6 h-[2px] bg-zinc-400 border-0" />
 
-      <h1 className="text-3xl mt-8 font-bold text-white">Recommondation && Similar stuff</h1>
-      <Horizontal card={
-        info.recommendations.length > 0 ? info.recommendations : info.similar
-      } />  
+      <h1 className="text-3xl mt-8 font-bold text-white">
+        Recommondation && Similar stuff
+      </h1>
+      <Horizontal
+        card={
+          info.recommendations.length > 0 ? info.recommendations : info.similar
+        }
+      />
       <Outlet />
     </div>
   ) : (

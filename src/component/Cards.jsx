@@ -4,15 +4,15 @@ import noimage from "../../public/noimg.png";
 const Cards = ({ data, title }) => {
   console.log(title);
   return (
-    <div className="flex w-full flex-wrap p-[5%] bg-[#1f1e24]">
+    <div className=" max-sm:justify-center  flex w-full flex-wrap md:px-[5%] md:p-7 bg-[#1f1e24]">
       {data.map((c, i) => (
         <Link
           key={i}
           to={`/${data.media_type || title}/details/${c.id}`}
-          className="relative  w-[27vh] mr-[5%] mb-[5%]"
+          className="relative max-sm:w-[32vh] md:w-[27vh] mr-[5%] max-sm:mb-[10%] md:mb-4"
         >
           <img
-  className="h-[44vh] object-cover shadow-[8px_17px_38px_2px_rgba(0,0,0,.5)]"
+  className="h-[44vh]  object-cover shadow-[8px_17px_38px_2px_rgba(0,0,0,.5)]"
   src={
     c.backdrop_path || c.profile_path
       ? `https://image.tmdb.org/t/p/original/${c.backdrop_path || c.profile_path}`

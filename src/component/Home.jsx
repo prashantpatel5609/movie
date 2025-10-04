@@ -1,4 +1,4 @@
-import Sidenav from "./partial/Sidenav";
+  import Sidenav from "./partial/Sidenav";
 import Topnav from "./Topnav";
 import Header from "./partial/Header";
 import React, { useEffect, useState } from "react";
@@ -6,6 +6,7 @@ import axios from "./../utils/axios";
 import Horizontal from "./partial/Horizontal";
 import Dropdown from "./partial/Dropdown";
 import Loader from "./Loader";
+import MobNav from "./MobNav";
   
 const Home = () => {
   const [wall, setwall] = useState(null);
@@ -43,18 +44,32 @@ const Home = () => {
   document.title = "SCSDB | Homepage";
   return wall ? (
     <>
+
+
+ 
       <Sidenav />
-      <div className="pl-2 w-[80%] h-full overflow-auto overflow-x-hidden sm:pr-2">
+
+       
+       
+
+       
+
+
+      <div className="px-1 md:w-[80%] w-full h-full overflow-auto overflow-x-hidden sm:pr-2">
+        <MobNav/> 
         <Topnav />
         <Header data={wall} />
-        <div className="m-2 w-full  flex justify-between items-center px-5 ">
-          {" "}
+        <div className="mt-3 w-full  flex justify-between items-center px-3 ">
+          
           <h1 className="text-3xl font-semibold text-zinc-400">Trending</h1>
-          <Dropdown
+          <div className="w-1/2" >          
+            <Dropdown className=""
             title="Filter"
             options={["tv", "movie", "all"]}
             func={(e) => setcat(e.target.value)}
           />
+          </div>
+
         </div>
         <Horizontal card={trend} />
       </div>

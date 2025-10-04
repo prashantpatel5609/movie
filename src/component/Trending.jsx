@@ -15,43 +15,36 @@ const Trending = () => {
   const [hasMore, sethasMore] = useState(true);
   const [page, setpage] = useState(1);
 
-
-   document.title = "SCSDB | Trending";
+  document.title = "SCSDB | Trending";
 
   const GetTrend = async () => {
     try {
-      const { data } = await axios.get(`/trending/${category}/${duration}?page=${page}`);
-     
-      if(data.results.length > 0){
+      const { data } = await axios.get(
+        `/trending/${category}/${duration}?page=${page}`
+      );
+
+      if (data.results.length > 0) {
         setpage(page + 1);
-      settrending((prev) => [...prev, ...data.results]);
-        
-      }
-      else{
+        settrending((prev) => [...prev, ...data.results]);
+      } else {
         sethasMore(false);
       }
-      
-      
-      console.log(trending);
-      
-      
 
+      console.log(trending);
     } catch (error) {
       console.log("error :", error);
     }
   };
 
-  const refreshHandler = () =>{
-    if(trending.length ===0){
+  const refreshHandler = () => {
+    if (trending.length === 0) {
       GetTrend();
-    }
-    else{
+    } else {
       setpage(1);
       settrending([]);
-       GetTrend();
+      GetTrend();
     }
-  }
-
+  };
 
   useEffect(() => {
     refreshHandler();
@@ -60,27 +53,39 @@ const Trending = () => {
   const navigate = useNavigate();
   return trending.length > 0 ? (
     <div className="w-screen h-screen ">
-      <div className=" px-[4%] w-full flex items-center justify-center">
-        <h1 className="text-2xl font-semibold text-zinc-400">
+      <div className="w-[85%] flex  max-sm:flex-col max-sm:items-start max-sm:mt-2 items-center justify-between">
+        <h1 className="  text-2xl font-semibold text-zinc-400 ml-10">
           <i
             onClick={() => navigate(-1)}
             className="mr-2 ri-arrow-left-line hover:text-[#6557cc]"
           ></i>
           Trending
         </h1>
+        <div className=" max-sm:hidden">
+          {" "}
+          <Topnav />
+        </div>
 
-        <Topnav />
-        <Dropdown
-          title="Category"
-          options={["tv", "movie", "all"]}
-          func={(e) => setcategory(e.target.value)}
-        />
-        <div className="w-[2%] "></div>
-        <Dropdown
-          title="Duration"
-          options={["week", "day"]}
-          func={(e) => setduration(e.target.value)}
-        />
+        <div className=" flex gap-4 max-sm:gap-6 max-sm:ml-11 max-sm:m-4">
+          <Dropdown
+            title="Category"
+            options={["tv", "movie", "all"]}
+            func={(e) => setcategory(e.target.value)}
+          />
+
+          <Dropdown
+            title="Duration"
+            options={["week", "day"]}
+            func={(e) => setduration(e.target.value)}
+          />
+        </div>
+<div className="ml-8 md:hidden">
+          {" "}
+          <Topnav />
+        </div>
+
+
+
       </div>
       <InfiniteScroll
         dataLength={trending.length}
@@ -89,7 +94,7 @@ const Trending = () => {
         loader={<h4 className="bg-[#1f1e24]">Loading...</h4>}
       >
         {" "}
-        <Cards data={trending} title={category}/>
+        <Cards data={trending} title={category} />
       </InfiniteScroll>
     </div>
   ) : (

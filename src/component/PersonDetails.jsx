@@ -25,25 +25,25 @@ const PersonDetails = () => {
 
   return info ? (
     <div>
-      <div className="px-[15%] w-screen bg-zinc-800">
+      <div className="px-[15%] w-screen bg-zinc-800 max-sm:px-[8%]">
         {/*navpart 1*/}
-        <nav className=" h-[10vh] w-full text-zinc-100 text-xl flex items-center justify-start gap-10">
+        <nav className=" h-[10vh] max-sm:h-16 max-sm:text-5xl max-sm:justify-start w-full text-zinc-100 text-xl max-sm:flex-col flex md:items-center justify-start gap-10">
           <Link
             onClick={() => navigate(-1)}
-            className="mr-2 ri-arrow-left-line hover:text-[#6557cc]"
+            className="md:mr-2 ri-arrow-left-line hover:text-[#6557cc]"
           ></Link>
         </nav>
 
         {/*photto bio*/}
 
-        <div className="flex gap-10">
+        <div className="flex max-sm:flex-col gap-10">
           <div className="w-full gap-3 flex flex-col">
             <img
-              className="shadow-[8px_17px_38px_2px_rgba(0,0,0,.5)] w-[15vw] object-cover"
+              className="shadow-[8px_17px_38px_2px_rgba(0,0,0,.5)] w-[15vw] max-sm:w-[160%] object-cover"
               src={`https://image.tmdb.org/t/p/original/${info.details.profile_path}`}
               alt=""
             />
-            <hr className="mt-4 h-[1px] w-[15vw]  bg-zinc-300 border-0" />
+            <hr className="mt-4 h-[1px] max-sm:w-[90vw] md:w-[15vw]  bg-zinc-300 border-0" />
             {/*social*/}
             <div className="flex gap-6  mt-1">
               <a
@@ -94,9 +94,7 @@ const PersonDetails = () => {
 
         {/* Personal Information */}
         <div className=" w-full h-screen">
-
-
-     <h1 className="text-2xl text-zinc-400 font-semibold my-5">
+          <h1 className="text-2xl text-zinc-400 font-semibold my-5">
             Person Info
           </h1>
 
@@ -133,7 +131,6 @@ const PersonDetails = () => {
           <h1 className=" text-zinc-400 ">
             {info.details.also_known_as.join(", ")}
           </h1>
-
         </div>
       </div>
     </div>

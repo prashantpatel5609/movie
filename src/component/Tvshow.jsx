@@ -41,25 +41,29 @@ const Tvshow = () => {
       GetTv();
     }
   };
- const navigate = useNavigate();
+  const navigate = useNavigate();
   useEffect(() => {
     refreshHandler();
   }, [category]);
 
   return tvshow.length > 0 ? (
-    <div className="w-screen h-screen ">
-      <div className=" px-[4%] w-full flex items-center justify-center">
-        <h1 className="text-2xl font-semibold text-zinc-400">
+    <div className="w-screen h-screen">
+      <div className=" w-[82%] flex items-center  gap-16 justify-between ml-6 md:ml-12 mt-1.5">
+        <div className="text-2xl font-semibold text-zinc-400 max-sm:mb-4">
           <i
             onClick={() => navigate(-1)}
-            className="mr-2 ri-arrow-left-line hover:text-[#6557cc]"
+            className="mr-5 ri-arrow-left-line hover:text-[#6557cc]"
           ></i>
-          TV Shows <small className="ml-3 text-sm">({category})</small>
-        </h1>
+          <h1 className="max-sm:flex max-sm:flex-col">
+            TV Shows <small className="ml-3 text-sm">({category})</small>
+          </h1>
+        </div>
 
-        <Topnav />
+        <div className="max-sm:hidden w-[65%]"><Topnav />
+       </div> 
+
         <Dropdown
-          title="Category"
+          title={category}
           options={["on_the_air", "popular", "top_rated", "airing_today"]}
           func={(e) => setcategory(e.target.value)}
         />

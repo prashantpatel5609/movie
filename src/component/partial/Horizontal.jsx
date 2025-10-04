@@ -5,18 +5,18 @@ import noimg from "../../../public/noimg.png";
 const Horizontal = ({card}) => {
   console.log(card);
   return (
-    <div className="w-full h-[50vh] p-3 mb-2 ">
+    <div className="w-full h-[50vh] p-3 mb-2 px-3 ">
       
 
- <div className="w-full h-full overflow-x-auto flex mb-2 gap-4">
+ <div className="min-w-full flex max-sm:flex-col overflow-x-auto mb-3 px-2 max-sm:gap-2">
   {   card.length>0? card.map((s, i) => (
     <Link to={`/${s.media_type}/details/${s.id}`}
       key={i}
-      className="w-[16%]  h-full shrink-0 bg-zinc-900 rounded-lg overflow-hidden flex flex-col"
+      className="sm:min-w-[30%] max-sm:w-[100%] md:mr-3 p-1 rounded-lg "
     >
      
      <img
-  className="w-full h-1/2 object-cover"
+  className="min-w-full min-h-1/2 object-cover rounded-md"
   src={s.backdrop_path || s.profile_path 
        ? `https://image.tmdb.org/t/p/original/${s.backdrop_path || s.profile_path}` 
        : "noimg.png"}
@@ -29,7 +29,7 @@ const Horizontal = ({card}) => {
         <h1 className="text-lg font-bold text-white">
           {s.name || s.title || s.original_name || s.original_title}
         </h1>
-        <p className="text-sm text-white line-clamp-4 mt-1 mb-0.5">
+        <p className="text-sm text-zinc-300 line-clamp-4 mt-1 mb-0.5">
           {s.overview || "No description available"}{" "}
           <span className="text-purple-600">more..</span>
         </p>

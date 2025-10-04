@@ -50,17 +50,17 @@ document.title = "SCSDB | Popular";
 
   const navigate = useNavigate();
   return popular.length > 0 ? (
-    <div className="w-screen h-screen ">
-      <div className=" px-[4%] w-full flex items-center justify-between pr-40">
+    <div className="w-screen h-screen md:mt-5 ">
+      <div className=" md:px-[5%] max-sm:pr-16 w-full flex items-center justify-between md:pr-40 max-sm:m-3">
         <h1 className="text-2xl font-semibold text-zinc-400">
           <i
             onClick={() => navigate(-1)}
             className="mr-2 ri-arrow-left-line hover:text-[#6557cc]"
           ></i>
-          Popular <small className="ml-3 text-sm">({category})</small>
+          Popular <small className="md:ml-3 text-sm">({category})</small>
         </h1>
 
-        <Topnav />
+        
         <Dropdown
           title="Category"
           options={["tv", "movie"]}
